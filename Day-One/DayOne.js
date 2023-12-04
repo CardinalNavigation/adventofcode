@@ -1031,7 +1031,7 @@ function checkForNumbers(indexSearched) {
   return addedNumbers;
 }
 
-// The numbers are still strings at this point, so you can just combine them together with the "+"
+// The numbers are still strings at this point, so you can just combine them together with the "+" operator
 // and Javascript will just push the two numbers together, without any math (ex [1, 3, 4]= "134")
 function firstAndLastCombine(newArray) {
   let firstNumber = newArray[0].toString();
