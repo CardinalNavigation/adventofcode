@@ -1,3 +1,4 @@
+// I used VS Code to sort though this pile of text and replace the first and last line with a " and ", .
 let input = [
   "9vxfg",
   "19qdlpmdrxone7sevennine",
@@ -1001,6 +1002,11 @@ let input = [
   "4vmzcrhtdvnm6zfive5pkbhcxj",
 ];
 
+// This function starts off our sorting procedure
+// I am creating a new array to pile all of the "sorted" numbers without text characters.
+// the sortedArray also ended up being where I pile all of my first and last numbers before
+// passing them through my function that added them together.
+// It also ends the function with the return function.
 function arraySort(input) {
   let sortedArray = [];
   for (let i = 0; i < input.length; i++) {
@@ -1010,6 +1016,9 @@ function arraySort(input) {
   return additionOfArray(sortedArray);
 }
 
+// This function takes each individual text and number string from the array and turns it into its *own* array
+// We then "search" through that array with another loop and pull out any item that is only a number, and push it into a new array.
+// Then this array of numbers only is passed through my function that takes out the first and last index item of the array
 function checkForNumbers(indexSearched) {
   let numbersArray = [];
   for (let i = 0; i < indexSearched.length; i++) {
@@ -1022,16 +1031,17 @@ function checkForNumbers(indexSearched) {
   return addedNumbers;
 }
 
+// The numbers are still strings at this point, so you can just combine them together with the "+"
+// and Javascript will just push the two numbers together, without any math (ex [1, 3, 4]= "134")
 function firstAndLastCombine(newArray) {
   let firstNumber = newArray[0].toString();
   let lastNumber = newArray[newArray.length - 1];
-  // if (newArray.length - 1 === 0) {
-  //   lastNumber = "";
-  // }
   let addedTogether = firstNumber + lastNumber;
   return addedTogether;
 }
 
+// This is the last function called in this process. After Step 3 the first function will call this last one which adds the numbers
+// of each index item in the sorted array together, and returns that value.
 function additionOfArray(sortedArray) {
   let addingThemTogether = 0;
   for (let i = 0; i < sortedArray.length; i++) {
@@ -1041,3 +1051,5 @@ function additionOfArray(sortedArray) {
 }
 
 console.log("This is input:", arraySort(input));
+
+//My Answer: 54390
