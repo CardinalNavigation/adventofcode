@@ -1002,24 +1002,42 @@ let input = [
 ];
 
 function arraySort(input) {
-  let newArray = [];
+  let sortedArray = [];
   for (let i = 0; i < input.length; i++) {
     let indexSearched = input[i];
-    numberCheck(indexSearched);
-    console.log(numberCheck(indexSearched));
-    console.log(i);
+    sortedArray.push(checkForNumbers(indexSearched));
   }
+  return additionOfArray(sortedArray);
 }
 
-function numberCheck(indexSearched) {
-  let newArray = [];
-  for (let t = 0; t < indexSearched.length; t++) {
-    let textIndex = indexSearched[t];
-    if (isNaN(textIndex) === false) {
-      newArray.push(textIndex);
+function checkForNumbers(indexSearched) {
+  let numbersArray = [];
+  for (let i = 0; i < indexSearched.length; i++) {
+    let text = indexSearched[i];
+    if (isNaN(text) === false) {
+      numbersArray.push(text);
     }
   }
-  console.log(newArray);
-  return newArray;
+  let addedNumbers = firstAndLastCombine(numbersArray);
+  return addedNumbers;
 }
+
+function firstAndLastCombine(newArray) {
+  let firstNumber = newArray[0].toString();
+  let lastNumber = newArray[newArray.length - 1];
+  // if (newArray.length - 1 === 0) {
+  //   lastNumber = "";
+  // }
+  let addedTogether = firstNumber + lastNumber;
+  return addedTogether;
+}
+
+function additionOfArray(sortedArray) {
+  let addingThemTogether = 0;
+  for (let i = 0; i < sortedArray.length; i++) {
+    addingThemTogether += Number(sortedArray[i]);
+  }
+  return addingThemTogether;
+}
+
 console.log("This is input:", arraySort(input));
