@@ -1006,7 +1006,7 @@ let input = [
 // I am creating a new array to pile all of the "sorted" numbers without text characters.
 // the sortedArray also ended up being where I pile all of my first and last numbers before
 // passing them through my function that added them together.
-// It also ends the function with the return function.
+// The chain of events for all of this code ends on line 1016.
 function arraySort(input) {
   let sortedArray = [];
   for (let i = 0; i < input.length; i++) {
