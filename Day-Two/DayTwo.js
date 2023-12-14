@@ -11,33 +11,32 @@ Game 1, 3 and 5 would have been possible.
  */
 
 const fs = require("fs");
+const readline = require("readline");
 
-try {
-  const data = fs.readFileSync("Day-Two/DayTwo.txt", "utf8");
-  // console.log(data);
-  getItIntoAnArray(data);
-} catch (err) {
-  console.error(err);
-}
+const readInterface = readline.createInterface({
+  input: fs.createReadStream("Day-Two/DayTwo.txt"),
+  // output: process.stdout,
+  // console: false,
+});
 
-// This funciton is going to take in the text input.
-// We want to convert the text input into something which is easy to go over with a function, like an array.
-// This could be a nested array, that might be the best option.
-function getItIntoAnArray(data) {
-  // console.log("Data is In The Function", data);
-  // Lets Start with the highest level first, which is reading each line individually, and tossing into an array.
-  let highestLevelArray = [];
-  highestLevelArray.push(data);
-  console.log(highestLevelArray);
-  highestLevelArray.map(indexSort);
-}
+//Opening and Empty Array
+let lines = [];
 
-//Right now I just have a one index array with a LOT of text.
-//We want to sort that text into seperate indexes.
-//I am attemping a .map() which transforms the array into
-//a new array.
-function indexSort(item) {
-  // let bagsArray = [];
-  // bagsArray.push(item);
-  // console.log("This is the Bags Array", bagsArray);
+//readInterface.on Listens for the readInterface function to begin (".on")
+//then takes each individual line and pushes that line to the empty array
+readInterface.on("line", function (line) {
+  lines.push(line);
+  gameArraySort(lines);
+});
+
+//Now what?.. I want to sort each index item in a way that will be helpful.
+// * Determine which games would have been possible if the bag had
+// * been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes.
+// * What is the sum of the IDs of those games?
+function gameArraySort(gameArray) {
+  //Lets try to get one "color" our first.
+  for (let i = 0; i < gameArray.length; i++) {
+    console.log("Game ", i, " is: ", gameArray[i]);
+  }
+  // console.log(gameArray[1]);
 }
