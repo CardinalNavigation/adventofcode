@@ -33,10 +33,15 @@ readInterface.on("line", function (line) {
 // * Determine which games would have been possible if the bag had
 // * been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes.
 // * What is the sum of the IDs of those games?
+//I found .split() was helpful, it works but chopping out the part of the array I want.
 function gameArraySort(gameArray) {
   //Lets try to get one "color" our first.
   for (let i = 0; i < gameArray.length; i++) {
-    console.log("Game ", i, " is: ", gameArray[i]);
+    let text = gameArray[i];
+    const myGame = text.split(":", 1);
+    const myArray = text.split(";");
+    console.log("My Game Number:", myGame);
+    console.log("My Array:", myArray);
   }
   // console.log(gameArray[1]);
 }
